@@ -1,0 +1,16 @@
+<form method="GET" action=".">
+    <select name="position" id="">
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <button type="submit">Поиск</button>
+</form>
+
+{% if next_page > 2 %}
+    <a href="?page={{ prev_page }}">previous</a>
+{% endif %}
+
+{{ posts }}
+
+
+<a href="?page={{ next_page }}">next</a>

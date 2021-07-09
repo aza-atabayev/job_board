@@ -1,0 +1,27 @@
+<form method="GET" action=".">
+    <select name="position" id="">
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <button type="submit">Поиск</button>
+</form>
+
+
+{% if posts %}
+    {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
+    {% for post in posts %}
+    <h1>{{ post.position }}</h1>
+    <p>{{ post.description }}</p>
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+    {% else %}
+        Посмотреть дополнительные результаты
+    {% endif %}
+{% else %}
+    Nothing's here
+{% endif %}
